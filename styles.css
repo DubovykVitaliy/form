@@ -1,0 +1,456 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Rubik', sans-serif;
+	line-height: 1;
+
+	background-color: #555;
+}
+.form {
+	font-size: 14px;
+	margin-top: 3rem;
+	max-width: 600px;
+	margin-inline: auto;
+	padding: 2rem;
+	background-color: #fff;
+	color: #333;
+}
+.form__title {
+	text-align: center;
+	padding: 1rem;
+	font-size: 2.4rem;
+}
+.form__item {
+	position: relative;
+	padding: 0.8rem 0 0 0;
+	margin-bottom: 1.2rem;
+	display: flex;
+	flex-direction: column-reverse;
+	row-gap: 0.4rem;
+	width: 100%;
+}
+.form__label {
+	font-size: 18px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+/* required * element done with js( adding class to ancestor of required input)
+   with Css only possible in simple nesting
+*/
+.form__item .form__label::after {
+	/* content: '*'; */
+	content: '(optional)';
+	font-size: 0.8em;
+}
+.form__item.req .form__label::after {
+	content: '*';
+	color: red;
+}
+.form__input {
+	/* position: relative; */
+	width: 100%;
+	padding: 0.2em 0.8em;
+	border: 1px solid #2231ff;
+	border-radius: 5px;
+	font-size: 18px;
+}
+.form__input:focus-visible {
+	outline: 2px solid #2231ff;
+	outline-offset: 0;
+	z-index: 2;
+}
+
+textarea.form__input {
+	min-height: 8rem;
+	resize: vertical;
+	padding: 1rem;
+}
+
+/*  */
+.form__error {
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 100%;
+	/* transform: translateY(5px); */
+	background-color: #ffcece;
+	color: red;
+	padding: 0.4rem;
+	box-shadow: inset 0 0 15px 1px #fff;
+	border-radius: 4px;
+	z-index: 1;
+	/* height: min-content; */
+}
+
+.form__radio {
+	position: relative;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.6em;
+	cursor: pointer;
+	overflow: visible;
+	height: 1.2rem;
+	/* padding: 0.4rem; */
+}
+.options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.form__radio--input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	left: 3rem;
+	clip: rect(0 0 0 0);
+	cursor: pointer;
+}
+.form__radio--box {
+	height: 16px;
+	width: 16px;
+	box-shadow: inset 0 0 0 20px #fff;
+	background-color: #2231ff;
+	border-radius: 50%;
+	transition: all 0.3s;
+	border: 2px solid #2231ff;
+}
+.form__radio--input:checked + .form__radio--box {
+	background-color: #2231ff;
+	box-shadow: inset 0 0 0 2px #fff;
+	animation: radioIn 0.3s linear;
+}
+.form__radio--input:checked:disabled + .form__radio--box {
+	background-color: #444;
+	box-shadow: inset 0 0 0 2px #fff;
+}
+.form__radio--input:disabled + .form__radio--box {
+	background-color: #444;
+	box-shadow: inset 0 0 0 20px #fff;
+}
+.form__radio--input:focus-visible + .form__radio--box {
+	outline: rgb(63, 244, 63) solid 2px;
+	outline-offset: 3px;
+}
+
+@keyframes radioIn {
+	0% {
+		box-shadow: inset 0 0 0 20px #fff;
+	}
+	50% {
+		box-shadow: inset 0 0 0 0px #fff;
+	}
+	100% {
+		box-shadow: inset 0 0 0 2px #fff;
+	}
+}
+/*  */
+/* SELECT */
+/*  */
+.select {
+	position: relative;
+	width: fit-content;
+}
+.select__options {
+	position: absolute;
+	display: block;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	list-style: none;
+	background-color: #fff;
+	border: 1px solid #2231ff;
+	border-radius: 5px;
+}
+
+.select__item {
+	padding: 0.2em 0.8em;
+	font-size: 18px;
+	cursor: pointer;
+	background-color: #fff;
+}
+.select__item:last-of-type {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.select__item:first-of-type {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.select__item:hover {
+	background-color: #cdcdcd;
+}
+.select__item:focus {
+	background-color: #cdcdcd;
+	outline: none;
+}
+.dropback {
+	position: fixed;
+	display: block;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 99;
+	/* background-color: #939393; */
+}
+.hide {
+	display: none;
+}
+/*  */
+/* RANGE */
+/*  */
+.range {
+	display: flex;
+	flex-flow: row wrap-reverse;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.8rem;
+	/* width: max-content; */
+}
+.range label {
+	flex-basis: 100%;
+}
+
+/*********** Baseline, reset styles ***********/
+input[type='range'] {
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+	/* width: 24rem; */
+	width: clamp(10rem, 50%, 30rem);
+}
+
+/* Removes default focus */
+input[type='range']:focus {
+	outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type='range']::-webkit-slider-runnable-track {
+	background-color: #2231ff;
+	border-radius: 0.5rem;
+	height: 0.4rem;
+	/* width: 25rem; */
+}
+
+input[type='range']:disabled::-webkit-slider-runnable-track {
+	background-color: #808080;
+}
+/* slider thumb */
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none; /* Override default look */
+	appearance: none;
+	margin-top: -5px; /* Centers thumb on the track */
+	background-color: #808080;
+	border-radius: 0.5rem;
+	height: 1rem;
+	width: 1rem;
+}
+
+input[type='range']:focus::-webkit-slider-thumb {
+	outline: 3px solid #808080;
+	outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type='range']::-moz-range-track {
+	background-color: #2231ff;
+	border-radius: 0.5rem;
+	height: 0.4rem;
+}
+input[type='range']:disabled ::-moz-range-track {
+	background-color: #808080;
+}
+/* slider thumb */
+input[type='range']::-moz-range-thumb {
+	background-color: #808080;
+	border: none; /*Removes extra border that FF applies*/
+	border-radius: 0.5rem;
+	height: 1rem;
+	width: 1rem;
+}
+
+input[type='range']:focus::-moz-range-thumb {
+	outline: 3px solid #808080;
+	outline-offset: 0.125rem;
+}
+
+/*       UPLOAD FILES    */
+.file {
+	flex-direction: column;
+}
+.file__item {
+	padding-top: 0.8rem;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: start;
+	row-gap: 0.8rem;
+}
+.file__input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	font-size: 0;
+	cursor: pointer;
+}
+.file__input:focus-visible {
+	outline: 1px solid #2231ff;
+	outline-offset: 3px;
+}
+
+.file__button {
+	position: relative;
+	display: inline-flex;
+	border-radius: 10px;
+	background-color: #0088ff;
+	border: 1px solid #2231ff;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+	padding: 0.6em 2em;
+	font-size: 1.2rem;
+	color: #fff;
+	transition: all 0.3s;
+	top: 0;
+}
+.file__button:hover {
+	scale: 1.04;
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+.file__button:active {
+	top: 3px;
+	box-shadow: none;
+}
+.file__preview {
+	display: inline-block;
+	max-width: 8rem;
+	max-height: 8rem;
+	/* order: 0; */
+}
+.file__preview img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* * checkbox */
+
+.checkbox {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	padding: 0.8rem 0 0 0;
+	margin-bottom: 2rem;
+	gap: 1rem;
+}
+.checkbox__label {
+	position: relative;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.4rem;
+	cursor: pointer;
+	flex-basis: content;
+	/* width: 100%; */
+	/* flex-grow: 1; */
+}
+.checkbox__label::before {
+	content: '';
+	box-sizing: border-box;
+	flex: 0 0 16px;
+	height: 16px;
+	background-color: #fff;
+	border: 2px solid #2231ff;
+	border-radius: 4px;
+	align-self: start;
+}
+.checkbox__label::after {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	height: 8px;
+	width: 8px;
+	top: 4px;
+	left: 4px;
+	background-color: #2231ff;
+	border-radius: 2px;
+	scale: 0;
+	transition: all 0.3s;
+}
+.checkbox__box {
+	white-space: nowrap;
+}
+.checkbox__label a:link,
+.checkbox__label a:visited {
+	text-decoration: none;
+	color: #2231ff;
+}
+.checkbox__label a:focus {
+	outline: 1px solid #2231ff;
+	outline-offset: 3px;
+}
+.checkbox__input {
+	/* display: none; */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	/* left: 3rem; */
+	clip: rect(0 0 0 0);
+	cursor: pointer;
+}
+.checkbox__input:checked + .checkbox__label::after {
+	scale: 1;
+}
+
+.checkbox__input:focus-visible + .checkbox__label::before {
+	outline: 2px solid #2231ff;
+	outline-offset: 3px;
+}
+
+/*  */
+.form__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	min-height: 2.4rem;
+	margin-inline: auto;
+	margin-top: 1rem;
+	border-radius: 10px;
+	padding: 0.6em 2em;
+	font-size: 1.2rem;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	cursor: pointer;
+	background-color: #0088ff;
+	border: 1px solid #2231ff;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s;
+	position: relative;
+	top: 0;
+}
+.form__button:focus-visible {
+	outline: 1px solid #2231ff;
+	outline-offset: 3px;
+}
+.form__button:hover {
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+	scale: 1.04;
+}
+.form__button:active {
+	top: 3px;
+	box-shadow: none;
+}

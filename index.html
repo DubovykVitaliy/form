@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <form class="form" id="form" action="">
+    <h2 class="form__title">My FORM</h2>
+    <div class="form__item">
+      <input class="form__input" id="firstname" type="text" name="firstname" />
+      <label for="firstname" class="form__label">First Name</label>
+      <!-- <span class="req"></span> -->
+    </div>
+    <div class="form__item">
+      <input class="form__input" id="lastname" type="text" name="lastname" />
+      <label for="lastname" class="form__label">Last Name</label>
+      <!-- <span class="req"></span> -->
+    </div>
+    <div class="form__item">
+      <input class="form__input" id="email" type="email" name="email" inputmode="email" />
+      <label for="email" class="form__label">Email</label>
+      <!-- <span class="req"></span> -->
+    </div>
+    <div class="form__item">
+      <input class="form__input" id="Telephone" type="tel" name="telephone" inputmode="tel" />
+      <label for="Telephone" class="form__label">Telephone Number</label>
+      <!-- <span class="req"></span> -->
+    </div>
+    <!--  Radio input class="form__input" -->
+    <div class="form__item">
+      <div class="options">
+        <div class="options__item">
+          <label class="form__radio" for="emailradio">
+            <span>Email</span>
+
+            <input class="form__radio--input" type="radio" id="emailradio" name="radio" value="email" checked />
+            <!-- <span class="req"></span> -->
+            <span class="form__radio--box"></span>
+          </label>
+        </div>
+
+        <div class="options__item">
+          <label class="form__radio" for="telradio">
+            <span>Tel Call</span>
+            <input class="form__radio--input" type="radio" id="telradio" name="radio" value="tel" />
+            <span class="form__radio--box"></span>
+          </label>
+        </div>
+      </div>
+      <span class="form__label">Select preferred type to contact you.</span>
+
+    </div>
+
+    <!-- textarea -->
+
+    <div class="form__item">
+      <textarea class="form__input" id="message" name="message" placeholder="type your message"></textarea>
+      <label for="message" class="form__label">Message</label>
+      <!-- <span class="req"></span> -->
+
+    </div>
+    <!--  Image upload  -->
+    <div class="form__item file">
+      <div class="file__item">
+        <div class="file__button">
+          <span>SEND</span>
+          <input class="file__input" type="file" id="formImage" name="formImage" accept=".jpg, .jpeg, .png, .svg," />
+          <!-- <span class="req"></span> -->
+        </div>
+        <div class="form__label">Choose your photo</div>
+      </div>
+      <div class="file__preview"></div>
+    </div>
+    <!--  Select -->
+    <div class="form__item select" id="select-skill" data-type="select">
+      <!-- <label for="skills">Choose your skill</label> -->
+      <!-- <select class="select" name="skills" id="skills"> -->
+      <input class="select__input form__input" value="" data-type="input" type="text" placeholder="Choose your skill"
+        name="selectSkill" readonly />
+      <span class="form__label">Select your skill</span>
+      <!-- <span class="req"></span> -->
+
+      <ul class="select__options hide" data-type="options">
+        <li class="select__item" tabindex="0" data-value="Javascript">Javascript</li>
+        <li class="select__item" tabindex="0" data-value="Vue">Vue</li>
+        <li class="select__item" tabindex="0" data-value="React">React</li>
+        <li class="select__item" tabindex="0" data-value="Angular">Angular</li>
+      </ul>
+      <div class="dropback hide" data-type="backdrop"></div>
+      <!-- <option value="">choose your skill</option>
+          <option value="javascript">Javascript</option>
+          <option value="vue">Vue</option>
+          <option value="angular">Angular</option>
+          <option value="react">React</option> -->
+      <!-- </select> -->
+    </div>
+    <!-- Range input class="form__input" -->
+    <div class="form__item range" data-type="range">
+      <input class="range__input" data-type="rangeInput" type="range" name="range" id="range" min="0" max="100"
+        value="10" step="5" disabled />
+
+      <span class="range__number" data-type="rangeNum">0</span>
+      <label for="range" class="form__label">Your experience</label>
+      <!-- <span class="req"></span> -->
+    </div>
+    <!-- checkbox -->
+    <!-- <div class="form__item"></div> -->
+    <div class="form__item checkbox">
+      <input class="checkbox__input" type="checkbox" id="checkbox" name="agreement" />
+
+      <label class="checkbox__label " for="checkbox">
+        <!--  * symbol here placed in span. after and before drawing fake checkbox -->
+        <span class="checkbox__box">I agree with <a href="#">terms</a></span>
+      </label>
+      <span class="form__label"></span>
+      <!-- <span class="req"></span> -->
+    </div>
+    <button type="submit" class="form__button">SEND form</button>
+  </form>
+  <script src="select.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
